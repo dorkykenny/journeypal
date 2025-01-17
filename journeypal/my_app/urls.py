@@ -12,4 +12,6 @@ urlpatterns = [
 
     path('cities/<int:city_id>/add-attraction', views.add_attraction, name='add-attraction'),
     path('cities/<int:city_id>/attractions/<int:attraction_id>/', views.attraction_detail, name='attraction-detail'),
+
+    path('accounts/signup/', views.signup, name='signup'),
 ]
