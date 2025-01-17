@@ -17,6 +17,12 @@
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'city-index' %}">All Cities</a></li>
                     <li><a href="{% url 'city-create' %}">Add a City</a></li>
+                    <li>
+                        <form id="logout-form" method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit">Log out</button>
+                        </form>
+                    </li>
                 {% else %}
                     <li><a href="{% url 'home' %}">Login</a></li>
                 {% endif %}
