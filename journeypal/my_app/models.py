@@ -11,3 +11,16 @@ class City(models.Model):
     
     def get_absolute_url(self):
         return reverse('city-detail', kwargs={'city_id': self.id})
+    
+
+class Attraction(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    class Meta: 
+        ordering = ['name']

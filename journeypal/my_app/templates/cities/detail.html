@@ -16,6 +16,46 @@
     </div>
 
 
+    <section class="attractions">
+
+        <div class="subsection-content">
+            {% if city.attraction_set.all.count %}
+            <table>
+                <thead>
+                <tr>
+                    <th>Attractions</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for attraction in city.attraction_set.all %}
+                <tr>
+                    <td>
+                        <a href="{% url 'attraction-detail' city.id attraction.id %}">
+                            {{attraction.name}}
+                        </a>
+                    </td>
+                </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <div class="subsection-content">
+                    <p>No added attractions yet!</p>
+                </div>
+            {% endif %}
+
+        </div>
+
+        <h3>Add an Attraction</h3>
+
+        <form action="" method="post" class="subsection-content" autocomplete="off">
+            {% csrf_token %} 
+            {{ attraction_form.as_p }}
+            <button type="submit" class="btn submit">Add Attraction</button>
+        </form>
+
+    </section>
+
 </section>
 
 {% endblock %}
