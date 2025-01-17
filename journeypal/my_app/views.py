@@ -21,8 +21,11 @@ def city_detail(request, city_id):
 
 class CityCreate(CreateView):
     model = City
-    fields = '__all__'
-    success_url = '/cities/'
+    fields = ['name', 'country', 'description']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class CityUpdate(UpdateView):
     model = City
