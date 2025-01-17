@@ -164,6 +164,32 @@ nav li {
     font-size: var(--font-reg);
 }
 
+.home-title {
+    font-size: 30px;
+    margin: 0px 0px 0px 280px;  
+}
+
+.signup-title {
+    font-size: 30px;
+    margin: 0px 0px 0px -5px;  
+}
+
+.logo {
+    width: 500px;
+    height: 350px;
+    margin: 0px 0px 0px 430px;
+}
+
+.login-form {
+    font-size: 20px;
+    margin: 50px 0px 0px 550px;
+}
+
+.signup-form {
+    font-size: 15px;
+    margin: 50px 0px 0px 350px;
+}
+
 @media only screen and (min-width: 768px) {
     header {
     position: sticky;
@@ -288,3 +314,4 @@ nav li {
 #logout-form button:hover {
     color: var(--link-hover-color);
 }
+

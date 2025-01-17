@@ -1,13 +1,17 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+<link rel="stylesheet" href="{% static 'css/base.css' %}" />
 {% endblock %} 
 
 {% block content %}
 
+<img src="https://i.imgur.com/aKF5QWR.png" class="logo"></img>
+<h3 class="home-title">The perfect place to find company for your next journey.</h3>
+
+<section class="signup-form">
+<h1 class="signup-title">Sign Up</h1>
 <div class="page-header">
-    <h1>Sign Up</h1>
 </div>
 {% if error_message %}
     <p class="red-text">{{ error_message }}</p>
@@ -15,9 +19,10 @@
 <form action="" method="post" class="form-container" autocomplete="off">
     {% csrf_token %}
     <table>
-        {{ form.as_table }}
+        {{ form.as_p }}
     </table>
     <button type="submit" class="btn submit">Submit!</button>
 </form>
+</section>
 
 {% endblock %}
