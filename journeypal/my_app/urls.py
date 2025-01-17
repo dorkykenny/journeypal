@@ -15,6 +15,7 @@ urlpatterns = [
 
     path('bucketlists/', views.bucketlist_index, name='bucketlist-index'),
     path('bucketlists/<int:bucketlist_id>/', views.bucketlist_detail, name='bucketlist-detail'),
+    path('bucketlists/create/', views.BucketListCreate.as_view(), name='bucketlist-create'),
 
     path('accounts/signup/', views.signup, name='signup'),
 ]

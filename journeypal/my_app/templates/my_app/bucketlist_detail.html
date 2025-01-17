@@ -7,6 +7,11 @@
     <div class="card-bg"></div>
         <div class="card-content">
         <h2>{{ bucketlist.name }}</h2>
+        <ul>
+            {% for city in bucketlist.cities.all %}
+                <li>{{ city.name }}</li>
+            {% endfor %}
+        </ul>
         </div>
     </div>
 <a href="" class="btn warn">Edit</a>

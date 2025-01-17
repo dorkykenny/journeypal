@@ -68,16 +68,27 @@ def attraction_detail(request, city_id, attraction_id):
 
 
 
-
+@login_required
 def bucketlist_index(request):
     bucketlists = BucketList.objects.filter(user=request.user)
-    return render(request, 'bucketlist_list.html', {'bucketlists': bucketlists})
+    return render(request, 'my_app/bucketlist_index.html', {'bucketlists': bucketlists})
 
-
+@login_required
 def bucketlist_detail(request, bucketlist_id):
     bucketlist = BucketList.objects.get(id=bucketlist_id)
-    return render(request, 'bucketlist_detail.html', {'bucketlist': bucketlist})
+    return render(request, 'my_app/bucketlist_detail.html', {'bucketlist': bucketlist})
 
+# bucketlist_update
+# bucketlist_delete
+
+
+class BucketListCreate(LoginRequiredMixin, CreateView):
+    model = BucketList
+    fields = ['name', 'cities']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 

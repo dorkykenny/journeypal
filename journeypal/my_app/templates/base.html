@@ -18,7 +18,9 @@
                 <ul>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'city-index' %}">All Cities</a></li>
+                    <li><a href="{% url 'bucketlist-index' %}">Bucket Lists</a></li>
                     <li><a href="{% url 'city-create' %}">Add a City</a></li>
+                    <li><a href="{% url 'bucketlist-create' %}">Create a Bucket List</a></li>
                     <li>
                         <form id="logout-form" method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
