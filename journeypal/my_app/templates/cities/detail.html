@@ -48,7 +48,7 @@
 
         <h3>Add an Attraction</h3>
 
-        <form action="" method="post" class="subsection-content" autocomplete="off">
+        <form action="{% url 'add-attraction' city.id %}" method="post" class="subsection-content" autocomplete="off">
             {% csrf_token %} 
             {{ attraction_form.as_p }}
             <button type="submit" class="btn submit">Add Attraction</button>

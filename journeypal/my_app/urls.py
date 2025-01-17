@@ -11,5 +11,5 @@ urlpatterns = [
     path('cities/<int:pk>/delete/', views.CityDelete.as_view(), name='city-delete'),
 
     path('cities/<int:city_id>/add-attraction', views.add_attraction, name='add-attraction'),
-    path('cities/<int:pk>/attractions/<int:attraction_id>/', views.AttractionDetail.as_view(), name='attraction-detail'),
+    path('cities/<int:city_id>/attractions/<int:attraction_id>/', views.attraction_detail, name='attraction-detail'),
 ]

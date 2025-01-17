@@ -40,5 +40,7 @@ def add_attraction(request, city_id):
         new_attraction.save()
     return redirect('city-detail', city_id=city_id)
 
-class AttractionDetail(DetailView):
-    model = Attraction
+def attraction_detail(request, city_id, attraction_id):
+    city = City.objects.get(id=city_id)
+    attraction = Attraction.objects.get(id=attraction_id)
+    return render(request, 'my_app/attraction_detail.html', {'city': city, 'attraction': attraction})
