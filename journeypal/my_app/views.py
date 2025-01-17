@@ -26,7 +26,7 @@ def city_detail(request, city_id):
     attraction_form = AttractionForm()
     return render(request, 'cities/detail.html', {'city': city, 'attraction_form': attraction_form})
 
-class CityCreate(CreateView, LoginRequiredMixin):
+class CityCreate(LoginRequiredMixin, CreateView):
     model = City
     fields = ['name', 'country', 'description']
 
@@ -34,11 +34,11 @@ class CityCreate(CreateView, LoginRequiredMixin):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class CityUpdate(UpdateView, LoginRequiredMixin):
+class CityUpdate(LoginRequiredMixin, UpdateView):
     model = City
     fields = ['country', 'description']
 
-class CityDelete(DeleteView, LoginRequiredMixin):
+class CityDelete(LoginRequiredMixin, DeleteView):
     model = City
     success_url = '/cities/'
 
