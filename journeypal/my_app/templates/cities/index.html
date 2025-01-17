@@ -8,7 +8,7 @@
 
 <section class="card-container">
 {% for city in cities %}
-    <a href="">
+    <a href="{% url 'city-detail' city.id %}">
         <div class="card">
             <div class="card-content">
                 <h2 class="card-title">{{ city.name }}</h2>

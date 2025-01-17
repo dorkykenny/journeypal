@@ -9,7 +9,13 @@
     <h1>{{ city.name }}</h1>
     <p>Country: {{ city.country }}</p>
     <p>Description: {{ city.description }}</p>
-    
+
+    <div class="city-actions">
+        <a href="{% url 'city-update' city.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'city-delete' city.id %}" class="btn danger">Delete</a>
+    </div>
+
+
 </section>
 
 {% endblock %}
