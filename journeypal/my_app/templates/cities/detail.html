@@ -1,0 +1,15 @@
+
+
+{% extends 'base.html' %} 
+
+{% block content %}
+<section class="city-container">
+
+<div class="city-details">
+    <h1>{{ city.name }}</h1>
+    <p>Country: {{ city.country }}</p>
+    <p>Description: {{ city.description }}</p>
+    
+</section>
+
+{% endblock %}
