@@ -3,7 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.contrib.auth.views import LoginView
 
-from .models import City, Attraction
+from .models import City, Attraction, BucketList
 from .forms import AttractionForm
 
 from django.contrib.auth import login
@@ -14,6 +14,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class Home(LoginView):
     template_name = 'home.html'
+
+
 
 @login_required
 def city_index(request):
@@ -42,6 +44,9 @@ class CityDelete(LoginRequiredMixin, DeleteView):
     model = City
     success_url = '/cities/'
 
+
+
+
 @login_required
 def add_attraction(request, city_id):
     form = AttractionForm(request.POST)
@@ -57,6 +62,24 @@ def attraction_detail(request, city_id, attraction_id):
     city = City.objects.get(id=city_id)
     attraction = Attraction.objects.get(id=attraction_id)
     return render(request, 'my_app/attraction_detail.html', {'city': city, 'attraction': attraction})
+
+# attraction_update
+# attraction_delete
+
+
+
+
+def bucketlist_index(request):
+    bucketlists = BucketList.objects.filter(user=request.user)
+    return render(request, 'bucketlist_list.html', {'bucketlists': bucketlists})
+
+
+def bucketlist_detail(request, bucketlist_id):
+    bucketlist = BucketList.objects.get(id=bucketlist_id)
+    return render(request, 'bucketlist_detail.html', {'bucketlist': bucketlist})
+
+
+
 
 def signup(request):
     error_message = ''

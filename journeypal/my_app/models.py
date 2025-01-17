@@ -27,3 +27,18 @@ class Attraction(models.Model):
 
     class Meta: 
         ordering = ['name']
+
+class BucketList(models.Model):
+    name = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    cities = models.ManyToManyField(City, related_name='bucket_lists')
+    
+    def __str__(self):
+        return f"{self.name} - {self.user.username}'s Bucket List"
+    
+    def get_absolute_url(self):
+        return reverse('bucketlist-detail', kwargs={'bucketlist_id': self.id})
+
+    class Meta:
+        verbose_name = "Bucket List"
+        verbose_name_plural = "Bucket Lists"
